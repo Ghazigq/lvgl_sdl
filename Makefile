@@ -13,7 +13,7 @@ WORKING_DIR			:= ./build
 BUILD_DIR			:= $(WORKING_DIR)/obj
 BIN_DIR				:= $(WORKING_DIR)/bin
 UI_DIR				:= ui
-LVGL_DIR_NAME		?= lvgl
+LVGL_DIR_NAME		?= ./3rd/lvgl/
 LVGL_DIR			?= ${shell pwd}
 EXCLUDE_DIR			:= */\.* $(LVGL_DIR)/$(LVGL_DIR_NAME)/tests $(LVGL_DIR)/$(LVGL_DIR_NAME)/env_support
 # EXCLUDE_DIR			+= $(LVGL_DIR)/$(LVGL_DIR_NAME)/examples
@@ -32,7 +32,7 @@ CFLAGS				:= -O0 -g $(WARNINGS)
 DEFINES				:= -D SIMULATOR=1 -D LV_BUILD_TEST=0
 
 # Include simulator inc folder first so lv_conf.h from custom UI can be used instead
-INC					:= -I./ui/simulator/inc/ -I./ -I./lvgl/
+INC					:= -I./ui/simulator/inc/ -I./ -I./3rd/ -I./3rd/lvgl/
 LDLIBS				:= -lSDL2 -lavformat -lavcodec -lavutil -lswscale -lswresample -lm -lz -lpthread
 BIN					:= $(BIN_DIR)/demo
 

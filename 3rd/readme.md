@@ -7,3 +7,13 @@ make install
 ./configure --prefix=/home/ghazi/personal/lvgl_sdl/3rd/libiconv-1.17/release --enable-static --disable-shared
 make
 make install
+
+## x265
+cd ./source
+mkdir build
+cd build
+cmake ..
+make
+make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/x265_3.5/source/build/release
+
+## x264

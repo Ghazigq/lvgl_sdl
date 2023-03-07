@@ -4,9 +4,6 @@
 [submodule "3rd/lv_drivers"]
 	path = 3rd/lv_drivers
 	url = https://github.com/lvgl/lv_drivers.git
-[submodule "3rd/ffmpeg"]
-	path = 3rd/ffmpeg
-	url = https://github.com/FFmpeg/FFmpeg.git
 [submodule "3rd/media-server"]
 	path = 3rd/media-server
 	url = https://github.com/ireader/media-server.git

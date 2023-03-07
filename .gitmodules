@@ -7,9 +7,3 @@
 [submodule "3rd/media-server"]
 	path = 3rd/media-server
 	url = https://github.com/ireader/media-server.git
-[submodule "3rd/x264"]
-	path = 3rd/x264
-	url = https://code.videolan.org/videolan/x264.git
-[submodule "3rd/x265"]
-	path = 3rd/x265
-	url = https://bitbucket.org/multicoreware/x265_git.git

@@ -17,3 +17,7 @@ make
 make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/x265_3.5/source/build/release
 
 ## x264
+./configure --enable-shared --enable-static --disable-asm --prefix=/home/ghazi/personal/lvgl_sdl/3rd/x264-master/release
+make
+make install
+

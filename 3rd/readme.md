@@ -21,3 +21,13 @@ make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/x265_3.5/source/build/rel
 make
 make install
 
+## ffmpeg
+<!-- 无作用
+x264_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/x264/x86_64/pkgconfig
+x265_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/x265/x86_64/pkgconfig
+export PKG_CONFIG_PATH=$x264_pkg_path:$x265_pkg_path -->
+
+./configure --enable-static --enable-libx264 --enable-gpl --enable-libx265 --extra-cflags=-I../x264/include --extra-ldflags=-L../x264/x86_64 --extra-cflags=-I../x265/include --extra-ldflags=-L../x265/x86_64 --prefix=/home/ghazi/personal/lvgl_sdl/3rd/FFmpeg-n5.0.2/release
+
+make
+make install

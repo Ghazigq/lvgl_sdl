@@ -1,0 +1,14 @@
+prefix=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg
+exec_prefix=${prefix}
+libdir=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64
+includedir=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 59.18.100
+Requires: libswresample >= 4.3.100, libavutil >= 57.17.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavcodec -pthread -liconv -lm -latomic -lz -L/home/ghazi/personal/lvgl_sdl/3rd/x264/lib -lx264 -L/home/ghazi/personal/lvgl_sdl/3rd/x265/x86_64 -lx265
+Libs.private: 
+Cflags: -I${includedir}

@@ -1,0 +1,14 @@
+prefix=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg
+exec_prefix=${prefix}
+libdir=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64
+includedir=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 59.16.100
+Requires: libavcodec >= 59.18.100, libswresample >= 4.3.100, libavutil >= 57.17.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavformat -lm -latomic -lz
+Libs.private: 
+Cflags: -I${includedir}

@@ -16,6 +16,7 @@ UI_DIR				:= ui
 LVGL_DIR_NAME		?= ./3rd/lvgl/
 LVGL_DIR			?= ${shell pwd}
 EXCLUDE_DIR			:= */\.* $(LVGL_DIR)/$(LVGL_DIR_NAME)/tests $(LVGL_DIR)/$(LVGL_DIR_NAME)/env_support
+EXCLUDE_DIR			+= $(LVGL_DIR)/3rd/media-server $(LVGL_DIR)/3rd/fdk-aac $(LVGL_DIR)/3rd/lame
 # EXCLUDE_DIR			+= $(LVGL_DIR)/$(LVGL_DIR_NAME)/examples
 
 WARNINGS				:= -Wall -Wextra \
@@ -26,14 +27,19 @@ WARNINGS				:= -Wall -Wextra \
 						-Wempty-body -Wshift-negative-value -Wstack-usage=2048 \
 						-Wtype-limits -Wsizeof-pointer-memaccess -Wpointer-arith
 
-CFLAGS				:= -O0 -g $(WARNINGS)
+CFLAGS				:= -O2 -g $(WARNINGS)
 
 # Add simulator define to allow modification of source
 DEFINES				:= -D SIMULATOR=1 -D LV_BUILD_TEST=0
 
 # Include simulator inc folder first so lv_conf.h from custom UI can be used instead
-INC					:= -I./ui/simulator/inc/ -I./ -I./3rd/ -I./3rd/lvgl/
-LDLIBS				:= -lSDL2 -lavformat -lavcodec -lavutil -lswscale -lswresample -lm -lz -lpthread
+INC					:= -I./ui/simulator/inc/ -I./ -I./3rd/ -I./3rd/lvgl/ 
+INC					+= -I./3rd/ffmpeg/include -I./3rd/x264/include -I./3rd/x265/include -I./3rd/SDL2/include -I./3rd/libiconv/include
+LDLIBS				+= -L./3rd/ffmpeg/x86_64 -lavformat -lavcodec -lavutil -lswscale -lswresample
+LDLIBS				+= -L./3rd/x264/x86_64 -lx264 -L./3rd/x265/x86_64 -lx265
+LDLIBS				+= -L./3rd/SDL2/x86_64 -lSDL2 -L./3rd/libiconv/x86_64 -liconv
+LDLIBS				+= -ldl -lcrypt -lm -lz -lpthread -lstdc++
+
 BIN					:= $(BIN_DIR)/demo
 
 COMPILE				= $(CC) $(CFLAGS) $(INC) $(DEFINES)

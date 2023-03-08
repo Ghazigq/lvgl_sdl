@@ -21,6 +21,11 @@ make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/x265_3.5/source/build/rel
 make
 make install
 
+## fdk-aac
+./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/fdk-aac-2.0.2/release
+make
+make install
+
 ## ffmpeg
 <!-- 无作用
 x264_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/x264/x86_64/pkgconfig

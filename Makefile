@@ -16,7 +16,7 @@ UI_DIR				:= ui
 LVGL_DIR_NAME		?= ./3rd/lvgl/
 LVGL_DIR			?= ${shell pwd}
 EXCLUDE_DIR			:= */\.* $(LVGL_DIR)/$(LVGL_DIR_NAME)/tests $(LVGL_DIR)/$(LVGL_DIR_NAME)/env_support
-EXCLUDE_DIR			+= $(LVGL_DIR)/3rd/media-server $(LVGL_DIR)/3rd/fdk-aac $(LVGL_DIR)/3rd/lame
+EXCLUDE_DIR			+= $(LVGL_DIR)/3rd/media-server
 # EXCLUDE_DIR			+= $(LVGL_DIR)/$(LVGL_DIR_NAME)/examples
 
 WARNINGS				:= -Wall -Wextra \

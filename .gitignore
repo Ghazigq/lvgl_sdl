@@ -23,7 +23,6 @@ build
 
 # Compiled Static libraries
 *.lai
-*.la
 *.lib
 
 # Executables

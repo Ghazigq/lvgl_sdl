@@ -1,10 +1,10 @@
 ## SDL2
-./configure --prefix=/home/ghazi/personal/lvgl_sdl/3rd/SDL-release-2.26.4/release
+./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/SDL-release-2.26.4/release
 make
 make install
 
 ## libiconv
-./configure --prefix=/home/ghazi/personal/lvgl_sdl/3rd/libiconv-1.17/release --enable-static --disable-shared
+./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/libiconv-1.17/release
 make
 make install
 

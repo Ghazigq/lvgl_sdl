@@ -29,6 +29,8 @@ WARNINGS				:= -Wall -Wextra \
 
 CFLAGS				:= -O2 -g $(WARNINGS)
 
+LDFLAGS				:= -static
+
 # Add simulator define to allow modification of source
 DEFINES				:= -D SIMULATOR=1 -D LV_BUILD_TEST=0
 

@@ -1,0 +1,12 @@
+prefix=/home/ghazi/lvgl_sdl/3rd/libpng
+exec_prefix=${prefix}
+libdir=${exec_prefix}/x86_64
+includedir=${prefix}/include/libpng16
+
+Name: libpng
+Description: Loads and saves PNG files
+Version: 1.6.39
+Requires.private: zlib
+Libs: -L${libdir} -lpng16
+Libs.private: -lm -lz -lm 
+Cflags: -I${includedir}

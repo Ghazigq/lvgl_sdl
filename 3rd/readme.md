@@ -47,6 +47,13 @@ http://www.libpng.org/pub/png/libpng.html
 make
 make install
 
+## opencv
+mkdir build
+cd build
+cmake ..
+make
+make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/opencv-4.7.0/build/release
+
 ## ffmpeg
 依赖：x264 x265 fdk-aac
 x264_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/x264/x86_64/pkgconfig

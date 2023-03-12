@@ -29,7 +29,26 @@ make install
 make
 make install
 
+## zlib
+https://github.com/madler/zlib.git
+./configure --prefix=/home/ghazi/personal/lvgl_sdl/3rd/zlib-1.2.13/release
+make
+make install
+
+## jpeg
+http://www.ijg.org/
+./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/jpeg-9e/release
+make
+make install
+
+## png
+http://www.libpng.org/pub/png/libpng.html
+./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/libpng-1.6.39/release
+make
+make install
+
 ## ffmpeg
+依赖：x264 x265 fdk-aac
 x264_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/x264/x86_64/pkgconfig
 x265_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/x265/x86_64/pkgconfig
 fdk_aac_pkg_path=/home/ghazi/personal/lvgl_sdl/3rd/fdk-aac/x86_64/pkgconfig

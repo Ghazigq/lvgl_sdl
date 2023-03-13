@@ -5,8 +5,8 @@ includedir=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/include
 
 Name: libpostproc
 Description: FFmpeg postprocessing library
-Version: 56.3.100
-Requires: libavutil >= 57.17.100
+Version: 56.6.100
+Requires: libavutil >= 57.28.100
 Requires.private: 
 Conflicts:
 Libs: -L${libdir}  -lpostproc -lm -latomic

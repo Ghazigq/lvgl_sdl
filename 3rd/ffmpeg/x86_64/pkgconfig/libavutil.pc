@@ -5,7 +5,7 @@ includedir=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/include
 
 Name: libavutil
 Description: FFmpeg utility library
-Version: 57.17.100
+Version: 57.28.100
 Requires: 
 Requires.private: 
 Conflicts:

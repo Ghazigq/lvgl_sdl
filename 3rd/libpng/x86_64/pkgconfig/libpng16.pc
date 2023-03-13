@@ -1,4 +1,4 @@
-prefix=/home/ghazi/lvgl_sdl/3rd/libpng
+prefix=/home/ghazi/personal/lvgl_sdl/3rd/libpng
 exec_prefix=${prefix}
 libdir=${exec_prefix}/x86_64
 includedir=${prefix}/include/libpng16

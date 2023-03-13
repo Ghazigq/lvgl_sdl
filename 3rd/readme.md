@@ -48,9 +48,19 @@ make
 make install
 
 ## opencv
+依赖：ffmpeg libpng
 mkdir build
 cd build
-cmake ..
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64:/home/ghazi/personal/lvgl_sdl/3rd/libpng/x86_64
+export PKG_CONFIG_PATH=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64/pkgconfig:/home/ghazi/personal/lvgl_sdl/3rd/libpng/x86_64/pkgconfig
+export PKG_CONFIG_LIBDIR=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64:/home/ghazi/personal/lvgl_sdl/3rd/libpng/x86_64
+
+cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON ..
+<!-- cmake -BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/homel \
+-DOPENCV_EXTRA_MODULES_PATH=/home/wanggao/software/opencv/opencv-4.2.0/opencv_contrib-4.2.0/modules \
+-DOPENCV_DNN_CUDA=True -DWITH_CUDA=True -DCUDA_ARCH_BIN="6.1 7.0 7.5" \
+-DBUILD_EXAMPLES=OFF -DWITH_GSTREAMER=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF \
+../sources -->
 make
 make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/opencv-4.7.0/build/release
 

@@ -1,33 +1,5 @@
-# 注意事项
-x264 x265 fdk-aac生成的pkgconfig下文件必须手动更改路径，否则ffmpeg编译时找不到库
-
 ## SDL2
-./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/SDL-release-2.26.4/release
-make
-make install
-
-## libiconv
-./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/libiconv-1.17/release
-make
-make install
-
-## x265
-cd ./source
-mkdir build
-cd build
-cmake ..
-make
-make install DESTDIR=/home/ghazi/personal/lvgl_sdl/3rd/x265_3.5/source/build/release
-
-## x264
-./configure --enable-shared --enable-static --disable-asm --prefix=/home/ghazi/personal/lvgl_sdl/3rd/x264-master/release
-make
-make install
-
-## fdk-aac
-./configure --enable-shared --enable-static --prefix=/home/ghazi/personal/lvgl_sdl/3rd/fdk-aac-2.0.2/release
-make
-make install
+依赖：libiconv
 
 ## zlib
 https://github.com/madler/zlib.git
@@ -51,11 +23,17 @@ make install
 依赖：ffmpeg libpng
 mkdir build
 cd build
+
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64:/home/ghazi/personal/lvgl_sdl/3rd/libpng/x86_64
 export PKG_CONFIG_PATH=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64/pkgconfig:/home/ghazi/personal/lvgl_sdl/3rd/libpng/x86_64/pkgconfig
 export PKG_CONFIG_LIBDIR=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64:/home/ghazi/personal/lvgl_sdl/3rd/libpng/x86_64
 
-cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON ..
+<!-- export FFMPEG_INCLUDE_DIRS=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/include
+export FFMPEG_LIBRARIES=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/x86_64 -->
+
+<!-- cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON .. -->
+
+cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON -DFFMPEG_INCLUDE_DIRS=/home/ghazi/personal/lvgl_sdl/3rd/ffmpeg/include ..
 <!-- cmake -BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/homel \
 -DOPENCV_EXTRA_MODULES_PATH=/home/wanggao/software/opencv/opencv-4.2.0/opencv_contrib-4.2.0/modules \
 -DOPENCV_DNN_CUDA=True -DWITH_CUDA=True -DCUDA_ARCH_BIN="6.1 7.0 7.5" \

@@ -1,0 +1,10 @@
+prefix=/home/ghazi/personal/lvgl_sdl/3rd/x86_64
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=/home/ghazi/personal/lvgl_sdl/3rd/include
+
+Name: libjpeg
+Description: Reads and writes JPEG files
+Version: 9.5.0
+Libs: -L${libdir} -ljpeg
+Cflags: -I${includedir}

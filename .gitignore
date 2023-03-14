@@ -33,3 +33,4 @@ build
 # personal
 3rd/ffmpeg/**/*.a
 compile_commands.json
+3rd/**/share/

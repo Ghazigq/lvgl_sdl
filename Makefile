@@ -44,8 +44,8 @@ INC					+= -I./3rd/include -I./3rd/include/opencv4
 LDLIBS				+= -L./3rd/x86_64/lib -L./3rd/x86_64/lib/opencv4/3rdparty \
 						-lopencv_flann -lopencv_ml -lopencv_photo -lopencv_dnn -lopencv_features2d -lopencv_videoio -lopencv_imgcodecs -lopencv_calib3d \
 						-lopencv_highgui -lopencv_objdetect -lopencv_stitching -lopencv_video -lopencv_gapi -lopencv_imgproc -lopencv_core \
-						-llibjpeg-turbo -llibtiff -llibwebp -llibopenjp2 -lIlmImf -llibprotobuf -lquirc -littnotify -lade -lpng -lpng16 \
-						-lavdevice -lavfilter -lavformat -lavcodec -lavutil -lswscale -lswresample -lpostproc -lx264 -lx265 \
+						-llibjpeg-turbo -llibtiff -llibwebp -llibopenjp2 -lIlmImf -lippiw -lippicv -llibprotobuf -lquirc -littnotify -lade -lpng -lpng16 \
+						-lavdevice -lavfilter -lavformat -lavcodec -lavutil -lswscale -lswresample -lpostproc -lx264 -lx265 -lfdk-aac \
 						-lSDL2 -liconv \
 						-ldl -lcrypt -lm -lz -lpthread
 

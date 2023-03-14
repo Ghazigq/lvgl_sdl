@@ -90,6 +90,7 @@ export PKG_CONFIG_LIBDIR=$lib_path
 echo "PKG_CONFIG_PATH: ${PKG_CONFIG_PATH}"
 echo "PKG_CONFIG_LIBDIR: ${PKG_CONFIG_LIBDIR}"
 
-choose
-build
-100M_tar
+case $1 in
+    untar)  100M_untar;;
+    *)      choose && build && 100M_tar;;
+esac

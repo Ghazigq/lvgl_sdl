@@ -16,10 +16,10 @@ WORKING_DIR			:= ./build
 BUILD_DIR			:= $(WORKING_DIR)/obj
 BIN_DIR				:= $(WORKING_DIR)/bin
 UI_DIR				:= ui
-LVGL_DIR_NAME		?= ./3rd/lvgl/
+LVGL_DIR_NAME		?= 3rd/lvgl/
 LVGL_DIR			?= ${shell pwd}
 EXCLUDE_DIR			:= */\.* $(LVGL_DIR)/$(LVGL_DIR_NAME)/tests $(LVGL_DIR)/$(LVGL_DIR_NAME)/env_support
-EXCLUDE_DIR			+= $(LVGL_DIR)/3rd/media-server $(LVGL_DIR)/3rd/opencv-4.7.0 $(LVGL_DIR)/3rd/FFmpeg-n5.1.2
+EXCLUDE_DIR			+= $(LVGL_DIR)/3rd/media-server $(LVGL_DIR)/3rd/x86_64/share
 # EXCLUDE_DIR			+= $(LVGL_DIR)/$(LVGL_DIR_NAME)/examples
 
 WARNINGS				:= -Wall -Wextra \
@@ -40,15 +40,14 @@ DEFINES				:= -D SIMULATOR=1 -D LV_BUILD_TEST=0
 
 # Include simulator inc folder first so lv_conf.h from custom UI can be used instead
 INC					:= -I./ui/simulator/inc/ -I./ -I./3rd/ -I./3rd/lvgl/ 
-INC					+= -I./3rd/ffmpeg/include -I./3rd/x264/include -I./3rd/x265/include -I./3rd/SDL2/include -I./3rd/libiconv/include
-INC					+= -I./3rd/opencv/include/opencv4
-LDLIBS				+= -L./3rd/opencv/x86_64 -lopencv_flann -lopencv_ml -lopencv_photo -lopencv_dnn -lopencv_features2d -lopencv_videoio -lopencv_imgcodecs -lopencv_calib3d -lopencv_highgui -lopencv_objdetect -lopencv_stitching -lopencv_video -lopencv_gapi -lopencv_imgproc -lopencv_core
-LDLIBS				+= -L./3rd/opencv/x86_64/opencv4/3rdparty -llibjpeg-turbo -llibtiff -llibwebp -llibopenjp2 -lIlmImf -llibprotobuf -lquirc -littnotify -lade
-LDLIBS				+= -L./3rd/libpng/x86_64 -lpng -lpng16
-LDLIBS				+= -L./3rd/ffmpeg/x86_64 -lavdevice -lavfilter -lavformat -lavcodec -lavutil -lswscale -lswresample -lpostproc
-LDLIBS				+= -L./3rd/x264/x86_64 -lx264 -L./3rd/x265/x86_64 -lx265
-LDLIBS				+= -L./3rd/SDL2/x86_64 -lSDL2 -L./3rd/libiconv/x86_64 -liconv
-LDLIBS				+= -ldl -lcrypt -lm -lz -lpthread
+INC					+= -I./3rd/include -I./3rd/include/opencv4
+LDLIBS				+= -L./3rd/x86_64/lib -L./3rd/x86_64/lib/opencv4/3rdparty \
+						-lopencv_flann -lopencv_ml -lopencv_photo -lopencv_dnn -lopencv_features2d -lopencv_videoio -lopencv_imgcodecs -lopencv_calib3d \
+						-lopencv_highgui -lopencv_objdetect -lopencv_stitching -lopencv_video -lopencv_gapi -lopencv_imgproc -lopencv_core \
+						-llibjpeg-turbo -llibtiff -llibwebp -llibopenjp2 -lIlmImf -llibprotobuf -lquirc -littnotify -lade -lpng -lpng16 \
+						-lavdevice -lavfilter -lavformat -lavcodec -lavutil -lswscale -lswresample -lpostproc -lx264 -lx265 \
+						-lSDL2 -liconv \
+						-ldl -lcrypt -lm -lz -lpthread
 
 BIN					:= $(BIN_DIR)/demo
 

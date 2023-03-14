@@ -4,4 +4,5 @@
 cd 3rd
 ./build.sh
 
-## 使用前解压
+## 使用前先解压文件
+cd 3rd && ./build.sh untar

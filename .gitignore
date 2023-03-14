@@ -31,6 +31,10 @@ build
 *.app
 
 # personal
-3rd/ffmpeg/**/*.a
 compile_commands.json
 3rd/**/share/
+**/x86_64/bin/opencv_interactive-calibration
+**/x86_64/bin/opencv_visualisation
+**/x86_64/lib/libavcodec.a
+**/x86_64/lib/python2.7/dist-packages/cv2/python-2.7/cv2.so
+**/x86_64/lib/python3.6/site-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so

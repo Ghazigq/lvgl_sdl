@@ -1,0 +1,14 @@
+prefix=/home/ghazi/personal/lvgl_sdl/3rd/x86_64
+exec_prefix=${prefix}
+libdir=/home/ghazi/personal/lvgl_sdl/3rd/x86_64/lib
+includedir=/home/ghazi/personal/lvgl_sdl/3rd/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 57.28.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil -pthread -lm -latomic -lX11
+Libs.private: 
+Cflags: -I${includedir}

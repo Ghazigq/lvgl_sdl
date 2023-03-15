@@ -1,7 +1,7 @@
 #!/bin/bash
 root_path=$PWD
 include_path=$root_path/include
-install_path=$root_path/x86_64
+install_path=$root_path/$1
 lib_path=$install_path/lib
 pkg_path=$lib_path/pkgconfig
 
@@ -9,6 +9,7 @@ build()
 {
     # [ -e build ] && rm -rf build
     mkdir -p build
+    mkdir -p $install_path
     tar -zxvf tar/$src_tar -C build
     cd build/${src_tar:0:4}* #jpeg只能4位
     if [[ "$src_tar" =~ "x264" ]]; then

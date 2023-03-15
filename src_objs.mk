@@ -13,7 +13,7 @@ lvgl-cflags-y := -Wextra -Wshadow -Wundef -Wmaybe-uninitialized -Wmissing-protot
 				-Wno-format-nonliteral -Wno-cast-qual -Wunreachable-code -Wno-switch-default -Wreturn-type -Wmultichar -Wformat-security \
 				-Wno-ignored-qualifiers -Wno-error=pedantic -Wno-sign-compare -Wno-error=missing-prototypes -Wdouble-promotion -Wclobbered \
 				-Wdeprecated -Wempty-body -Wshift-negative-value -Wstack-usage=2048 -Wtype-limits -Wsizeof-pointer-memaccess -Wpointer-arith
-lvgl-cflags-y += -D SIMULATOR=1 -D LV_BUILD_TEST=0 -I3rd -I3rd/lvgl -I3rd/include
+lvgl-cflags-y += -D SIMULATOR=1 -D LV_BUILD_TEST=0 -I3rd -I3rd/lvgl -I3rd/x86_64/include
 
 exclude_dir := 
 lv_drivers-objs-y := $(patsubst %,-not -path '%/*',$(exclude_dir))
@@ -28,7 +28,7 @@ bin-y := bin_src
 
 bin_src-objs-y := main.cpp
 bin_src-objs-y += $(shell find ui -type f -name '*.c' -o -name '*.cpp')
-bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/include -I3rd/include/opencv4
+bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/x86_64/include -I3rd/x86_64/include/opencv4
 bin_src-ldflags-y := -static -L./3rd/x86_64/lib -L./3rd/x86_64/lib/opencv4/3rdparty \
 					-lopencv_flann -lopencv_ml -lopencv_photo -lopencv_dnn -lopencv_features2d -lopencv_videoio -lopencv_imgcodecs -lopencv_calib3d \
 					-lopencv_highgui -lopencv_objdetect -lopencv_stitching -lopencv_video -lopencv_gapi -lopencv_imgproc -lopencv_core \

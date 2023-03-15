@@ -6,3 +6,6 @@ cd 3rd
 
 ## 使用前先解压文件
 cd 3rd && ./build.sh untar && cd -
+
+## 项目编译
+./all.sh

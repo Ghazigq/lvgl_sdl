@@ -31,6 +31,8 @@ build
 *.app
 
 # personal
+.config
+install/
 compile_commands.json
 3rd/**/share/
 **/x86_64/bin/opencv_interactive-calibration

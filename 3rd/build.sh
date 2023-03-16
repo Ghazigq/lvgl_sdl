@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 root_path=$PWD
 install_path=$root_path/$1
 lib_path=$install_path/lib
@@ -17,15 +17,33 @@ build()
         make
         make install
     elif [[ "$src_tar" =~ "x265" ]]; then
-        cd ./source
-        mkdir -p build
-        cd build
-        cmake -DCMAKE_INSTALL_PREFIX=$install_path ..
+        if [[ "$install_path" =~ "win64" ]]; then
+            # x265Version.txt > source/cmake/Version.cmake
+            # set(X265_LATEST_TAG "3.5")
+            # set(X265_TAG_DISTANCE "1")
+            # set(X265_REVISION_ID "f0c1022b6")
+            # set(X265_VERSION "3.5+1-f0c1022b6")
+            # message(STATUS "X265 RELEASE VERSION ${X265_VERSION}")
+            cd ./source
+            mkdir -p build
+            cd build
+            cmake -G "MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=$install_path .. && cmake-gui ..
+            # cmake -DCMAKE_INSTALL_PREFIX=$install_path .. # ./make-Makefiles.sh
+            # cd build/msys
+            # ./make-Makefiles.sh
+            # cd -
+            # cd ./source
+        else
+            cd ./source
+            mkdir -p build
+            cd build
+            cmake -DCMAKE_INSTALL_PREFIX=$install_path ..
+        fi
         make
         make install
         cd -
     elif [[ "$src_tar" =~ "FFmpeg" ]]; then
-        ./configure --enable-static --enable-libx264 --enable-gpl --enable-libx265 --enable-libfdk-aac --enable-nonfree \
+        ./configure --disable-vulkan --enable-static --enable-libx264 --enable-gpl --enable-libx265 --enable-libfdk-aac --enable-nonfree \
         --extra-cflags="-I$include_path" --extra-ldflags="-L$install_path" --prefix=$install_path
         make -j8
         make install
@@ -53,7 +71,7 @@ choose()
     done
 }
 
-100M_tar()
+tar_100M()
 {
     for tar_file in `find . -type f -size +100000k`;
     do
@@ -61,7 +79,7 @@ choose()
     done
 }
 
-100M_untar()
+untar_100M()
 {
     for untar_file in `find . -name "*_100M.tar.gz"`;
     do
@@ -75,6 +93,6 @@ echo "PKG_CONFIG_PATH: ${PKG_CONFIG_PATH}"
 echo "PKG_CONFIG_LIBDIR: ${PKG_CONFIG_LIBDIR}"
 
 case $1 in
-    untar)  100M_untar;;
-    *)      choose && build && 100M_tar;;
+    untar)  untar_100M;;
+    *)      choose && build && tar_100M;;
 esac

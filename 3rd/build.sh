@@ -27,14 +27,14 @@ build()
     elif [[ "$src_tar" =~ "FFmpeg" ]]; then
         ./configure --enable-static --enable-libx264 --enable-gpl --enable-libx265 --enable-libfdk-aac --enable-nonfree \
         --extra-cflags="-I$include_path" --extra-ldflags="-L$install_path" --prefix=$install_path
-        make
+        make -j8
         make install
     elif [[ "$src_tar" =~ "opencv" ]]; then
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$lib_path
         mkdir -p build
         cd build
         cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON -DFFMPEG_INCLUDE_DIRS=$include_path -DCMAKE_INSTALL_PREFIX=$install_path ..
-        make
+        make -j8
         make install
         cd -
     else

@@ -28,13 +28,13 @@ bin-y := bin_src
 
 bin_src-objs-y := main.cpp
 bin_src-objs-y += $(shell find ui -type f -name '*.c' -o -name '*.cpp')
-bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/x86_64/include -I3rd/x86_64/include/opencv4
-bin_src-ldflags-y := -static -L./3rd/x86_64/lib -L./3rd/x86_64/lib/opencv4/3rdparty \
+bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/lvgl -I3rd/x86_64/include -I3rd/x86_64/include/opencv4
+bin_src-ldflags-y := -L./3rd/x86_64/lib -L./3rd/x86_64/lib/opencv4/3rdparty \
+					-llvgl -llv_drivers \
 					-lopencv_flann -lopencv_ml -lopencv_photo -lopencv_dnn -lopencv_features2d -lopencv_videoio -lopencv_imgcodecs -lopencv_calib3d \
 					-lopencv_highgui -lopencv_objdetect -lopencv_stitching -lopencv_video -lopencv_gapi -lopencv_imgproc -lopencv_core \
-					-llibjpeg-turbo -llibtiff -llibwebp -llibopenjp2 -lIlmImf -lippiw -lippicv -llibprotobuf -lquirc -littnotify -lade -lpng -lpng16 \
+					-ljpeg -llibtiff -llibwebp -llibopenjp2 -lIlmImf -lippiw -lippicv -llibprotobuf -lquirc -littnotify -lade -lpng -lpng16 \
 					-lavdevice -lavfilter -lavformat -lavcodec -lavutil -lswscale -lswresample -lpostproc -lx264 -lx265 -lfdk-aac \
-					-llvgl -llv_drivers \
 					-lSDL2 -liconv \
 					-ldl -lcrypt -lm -lz -lpthread
 

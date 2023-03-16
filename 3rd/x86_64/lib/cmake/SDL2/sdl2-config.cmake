@@ -19,7 +19,7 @@ get_filename_component(prefix "${CMAKE_CURRENT_LIST_DIR}/../../.." ABSOLUTE)
 set(exec_prefix "${prefix}")
 set(bindir "${exec_prefix}/bin")
 set(libdir "${exec_prefix}/lib")
-set(includedir "/home/ghazi/personal/lvgl_sdl/3rd/include")
+set(includedir "${prefix}/include")
 
 set_and_check(SDL2_PREFIX         "${prefix}")
 set_and_check(SDL2_EXEC_PREFIX    "${exec_prefix}")

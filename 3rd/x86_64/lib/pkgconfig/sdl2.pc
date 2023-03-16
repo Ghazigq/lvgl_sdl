@@ -3,7 +3,7 @@
 prefix=/home/ghazi/personal/lvgl_sdl/3rd/x86_64
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
-includedir=/home/ghazi/personal/lvgl_sdl/3rd/include
+includedir=${prefix}/include
 
 Name: sdl2
 Description: Simple DirectMedia Layer is a cross-platform multimedia library designed to provide low level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.

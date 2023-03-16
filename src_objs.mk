@@ -29,14 +29,15 @@ bin-y := bin_src
 bin_src-objs-y := main.cpp
 bin_src-objs-y += $(shell find ui -type f -name '*.c' -o -name '*.cpp')
 bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/lvgl -I3rd/x86_64/include -I3rd/x86_64/include/opencv4
-bin_src-ldflags-y := -L./3rd/x86_64/lib -L./3rd/x86_64/lib/opencv4/3rdparty \
-					-llvgl -llv_drivers \
-					-lopencv_flann -lopencv_ml -lopencv_photo -lopencv_dnn -lopencv_features2d -lopencv_videoio -lopencv_imgcodecs -lopencv_calib3d \
-					-lopencv_highgui -lopencv_objdetect -lopencv_stitching -lopencv_video -lopencv_gapi -lopencv_imgproc -lopencv_core \
-					-ljpeg -llibtiff -llibwebp -llibopenjp2 -lIlmImf -lippiw -lippicv -llibprotobuf -lquirc -littnotify -lade -lpng -lpng16 \
-					-lavdevice -lavfilter -lavformat -lavcodec -lavutil -lswscale -lswresample -lpostproc -lx264 -lx265 -lfdk-aac \
-					-lSDL2 -liconv \
-					-ldl -lcrypt -lm -lz -lpthread
+
+bin_src-ldflags-y += $(PROJECT_BUILD_DIR)/liblvgl.a $(PROJECT_BUILD_DIR)/liblv_drivers.a
+bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/lib%.a,opencv_flann opencv_ml opencv_photo opencv_dnn opencv_features2d opencv_videoio opencv_imgcodecs opencv_calib3d \
+					opencv_highgui opencv_objdetect opencv_stitching opencv_video opencv_gapi opencv_imgproc opencv_core \
+					jpeg png png16 \
+					avdevice avfilter avformat avcodec avutil swscale swresample postproc x264 x265 fdk-aac \
+					SDL2 )
+bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/opencv4/3rdparty/lib%.a,libtiff libwebp libopenjp2 IlmImf ippiw ippicv libprotobuf quirc ittnotify ade)
+bin_src-ldflags-y += -liconv -ldl -lcrypt -lm -lz -lpthread
 
 ################################################################################
 # test source

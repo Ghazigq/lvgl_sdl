@@ -1,0 +1,14 @@
+prefix=/d/Code/lvgl_sdl/3rd/win64
+exec_prefix=${prefix}
+libdir=/d/Code/lvgl_sdl/3rd/win64/lib
+includedir=/d/Code/lvgl_sdl/3rd/win64/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 59.37.100
+Requires: libswresample >= 4.7.100, libavutil >= 57.28.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavcodec -liconv -lm -latomic -llzma -LD:/Code/lvgl_sdl/3rd/win64/lib -lfdk-aac -LD:/Code/lvgl_sdl/3rd/win64/lib -lx264 -LD:/Code/lvgl_sdl/3rd/win64/lib -lx265 -lmfuuid -lole32 -lstrmiids -lole32 -luser32 -lz
+Libs.private: 
+Cflags: -I${includedir}

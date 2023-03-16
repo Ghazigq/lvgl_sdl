@@ -1,0 +1,14 @@
+prefix=/d/Code/lvgl_sdl/3rd/win64
+exec_prefix=${prefix}
+libdir=/d/Code/lvgl_sdl/3rd/win64/lib
+includedir=/d/Code/lvgl_sdl/3rd/win64/include
+
+Name: libavdevice
+Description: FFmpeg device handling library
+Version: 59.7.100
+Requires: libavfilter >= 8.44.100, libswscale >= 6.7.100, libpostproc >= 56.6.100, libavformat >= 59.27.100, libavcodec >= 59.37.100, libswresample >= 4.7.100, libavutil >= 57.28.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavdevice -lpsapi -lole32 -lstrmiids -luuid -loleaut32 -lshlwapi -lgdi32 -lm -latomic -lvfw32 -LD:/Code/lvgl_sdl/3rd/win64/lib -lmingw32 -lSDL2main -lSDL2
+Libs.private: 
+Cflags: -I${includedir}

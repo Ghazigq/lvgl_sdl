@@ -1,0 +1,14 @@
+prefix=/d/Code/lvgl_sdl/3rd/win64
+exec_prefix=${prefix}
+libdir=/d/Code/lvgl_sdl/3rd/win64/lib
+includedir=/d/Code/lvgl_sdl/3rd/win64/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 59.27.100
+Requires: libavcodec >= 59.37.100, libswresample >= 4.7.100, libavutil >= 57.28.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavformat -lm -latomic -lbz2 -lz -lsecur32 -lws2_32
+Libs.private: 
+Cflags: -I${includedir}

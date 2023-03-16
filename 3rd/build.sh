@@ -51,7 +51,12 @@ build()
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$lib_path
         mkdir -p build
         cd build
-        cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON -DFFMPEG_INCLUDE_DIRS=$include_path -DCMAKE_INSTALL_PREFIX=$install_path ..
+        if [[ "$install_path" =~ "win64" ]]; then
+            cmake -G "MSYS Makefiles" -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON -DFFMPEG_INCLUDE_DIRS=$include_path -DCMAKE_INSTALL_PREFIX=$install_path ..
+            cmake ..
+        else
+            cmake -DBUILD_SHARED_LIBS=OFF -DWITH_FFMPEG=ON -DOPENCV_FFMPEG_ENABLE_LIBAVDEVICE=ON -DFFMPEG_INCLUDE_DIRS=$include_path -DCMAKE_INSTALL_PREFIX=$install_path ..
+        fi
         make -j8
         make install
         cd -

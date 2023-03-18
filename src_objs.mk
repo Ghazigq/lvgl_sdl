@@ -13,7 +13,7 @@ lvgl-cflags-y := -Wextra -Wshadow -Wundef -Wmaybe-uninitialized -Wmissing-protot
 				-Wno-format-nonliteral -Wno-cast-qual -Wunreachable-code -Wno-switch-default -Wreturn-type -Wmultichar -Wformat-security \
 				-Wno-ignored-qualifiers -Wno-error=pedantic -Wno-sign-compare -Wno-error=missing-prototypes -Wdouble-promotion -Wclobbered \
 				-Wdeprecated -Wempty-body -Wshift-negative-value -Wstack-usage=2048 -Wtype-limits -Wsizeof-pointer-memaccess -Wpointer-arith
-lvgl-cflags-y += -D SIMULATOR=1 -D LV_BUILD_TEST=0 -I3rd -I3rd/lvgl -I3rd/x86_64/include
+lvgl-cflags-y += -D SIMULATOR=1 -D LV_BUILD_TEST=0 -I3rd -I3rd/lvgl -I3rd/$(CONFIG_ARCH_PATH)/include
 
 exclude_dir := 
 lv_drivers-objs-y := $(patsubst %,-not -path '%/*',$(exclude_dir))
@@ -28,8 +28,17 @@ bin-y := bin_src
 
 bin_src-objs-y := main.cpp
 bin_src-objs-y += $(shell find ui -type f -name '*.c' -o -name '*.cpp')
-bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/lvgl -I3rd/x86_64/include -I3rd/x86_64/include/opencv4
-
+bin_src-cflags-y := -I. -Iui/simulator/inc -I3rd -I3rd/lvgl -I3rd/$(CONFIG_ARCH_PATH)/include -I3rd/$(CONFIG_ARCH_PATH)/include/opencv4
+ifeq ($(CONFIG_PLAT_WINDOWS),y)
+bin_src-cflags-y  += -DOS_WINDOWS
+bin_src-ldflags-y += $(PROJECT_BUILD_DIR)/lvgl.dll $(PROJECT_BUILD_DIR)/lv_drivers.dll
+bin_src-ldflags-y += $(patsubst %,3rd/$(CONFIG_ARCH_PATH)/lib/lib%.a,avdevice avfilter avformat avcodec avutil swscale swresample postproc)
+bin_src-ldflags-y += -L3rd/$(CONFIG_ARCH_PATH)/lib -lx264
+bin_src-ldflags-y += $(patsubst %,3rd/$(CONFIG_ARCH_PATH)/lib/lib%.a,x265 fdk-aac jpeg png png16 \
+					SDL2main SDL2)
+bin_src-ldflags-y += -lpsapi -lshlwapi -lvfw32 -liconv -latomic -llzma -lmfuuid -lstrmiids -lz -lbz2 -lsecur32 -lws2_32 -lbcrypt -lm -lgcc_s -lgcc# ffmpeg
+bin_src-ldflags-y += -lmingw32 -mwindows -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lsetupapi -lversion -luuid
+else
 bin_src-ldflags-y += $(PROJECT_BUILD_DIR)/liblvgl.a $(PROJECT_BUILD_DIR)/liblv_drivers.a
 bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/lib%.a,opencv_flann opencv_ml opencv_photo opencv_dnn opencv_features2d opencv_videoio opencv_imgcodecs opencv_calib3d \
 					opencv_highgui opencv_objdetect opencv_stitching opencv_video opencv_gapi opencv_imgproc opencv_core \
@@ -38,6 +47,7 @@ bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/lib%.a,opencv_flann opencv_ml o
 					SDL2 )
 bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/opencv4/3rdparty/lib%.a,libtiff libwebp libopenjp2 IlmImf ippiw ippicv libprotobuf quirc ittnotify ade)
 bin_src-ldflags-y += -liconv -ldl -lcrypt -lm -lz -lpthread
+endif
 
 ################################################################################
 # test source

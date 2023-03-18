@@ -9,3 +9,6 @@ cd 3rd && ./build.sh untar && cd -
 
 ## 项目编译
 ./all.sh
+
+## 项目运行
+windows下时export PATH=PATH:/d/Code/lvgl_sdl/3rd/win64/lib

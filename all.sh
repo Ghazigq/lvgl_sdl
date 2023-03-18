@@ -8,11 +8,6 @@ clean_common()
 
 build_common()
 {
-if ! [ -x "$(command -v bear)" ]; then
-    make
-else
-    bear make
-fi
     make test
     make install
 }
@@ -25,7 +20,8 @@ choose()
     done
 
     cp $app_type .config
-    echo "" >> .config
+    arch_path=`echo $app_type | cut -d "/" -f 2 | cut -d "_" -f 1`
+    echo -e "\nCONFIG_ARCH_PATH=$arch_path" >> .config
 }
 
 case $1 in

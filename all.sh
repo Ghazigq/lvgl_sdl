@@ -21,6 +21,9 @@ choose()
 
     cp $app_type .config
     arch_path=`echo $app_type | cut -d "/" -f 2 | cut -d "_" -f 1`
+    if [[ "$app_type" =~ "x86_64" ]]; then
+        arch_path=x86_64
+    fi
     echo -e "\nCONFIG_ARCH_PATH=$arch_path" >> .config
 }
 

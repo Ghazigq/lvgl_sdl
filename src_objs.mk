@@ -44,9 +44,9 @@ bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/lib%.a,opencv_flann opencv_ml o
 					opencv_highgui opencv_objdetect opencv_stitching opencv_video opencv_gapi opencv_imgproc opencv_core \
 					jpeg png png16 \
 					avdevice avfilter avformat avcodec avutil swscale swresample postproc x264 x265 fdk-aac \
-					SDL2 )
+					SDL2 iconv)
 bin_src-ldflags-y += $(patsubst %,3rd/x86_64/lib/opencv4/3rdparty/lib%.a,libtiff libwebp libopenjp2 IlmImf ippiw ippicv libprotobuf quirc ittnotify ade)
-bin_src-ldflags-y += -liconv -ldl -lcrypt -lm -lz -lpthread
+bin_src-ldflags-y += -ldl -lcrypt -lm -lz -lpthread
 endif
 
 ################################################################################

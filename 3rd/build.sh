@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 root_path=$PWD
 install_path=$root_path/$1
 lib_path=$install_path/lib

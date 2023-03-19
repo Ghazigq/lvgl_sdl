@@ -666,7 +666,8 @@
 #define LV_USE_FFMPEG 1
 #if LV_USE_FFMPEG
     /*Dump input information to stderr*/
-    #define LV_FFMPEG_DUMP_FORMAT 0
+    #define LV_FFMPEG_DUMP_FORMAT 1
+    #define LV_FFMPEG_AV_DUMP_FORMAT 1
 #endif
 
 /*-----------

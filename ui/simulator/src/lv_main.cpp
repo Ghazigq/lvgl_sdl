@@ -10,9 +10,7 @@
 
 // user
 #include "lv_main.h"
-extern "C" {
 #include "lv_ui.h"
-};
 
 static int tick_thread(void* data) {
   while (1) {

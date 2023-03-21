@@ -48,7 +48,7 @@ lv_camera_t* lv_camera_ui(void) {
   lv_camera->cap = new cv::VideoCapture(-1);
   // lv_camera->cap = new cv::VideoCapture("resource/test.mp4");
   if (!lv_camera->cap->isOpened()) {
-    delete[] lv_camera->cap;
+    delete lv_camera->cap;
     free(lv_camera);
     return NULL;
   }

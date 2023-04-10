@@ -7,3 +7,6 @@
 [submodule "3rd/media-server"]
 	path = 3rd/media-server
 	url = https://github.com/ireader/media-server.git
+[submodule "3rd/sdk"]
+	path = 3rd/sdk
+	url = https://github.com/ireader/sdk.git

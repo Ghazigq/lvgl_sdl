@@ -10,3 +10,6 @@
 [submodule "3rd/sdk"]
 	path = 3rd/sdk
 	url = https://github.com/ireader/sdk.git
+[submodule "3rd/avcodec"]
+	path = 3rd/avcodec
+	url = https://github.com/ireader/avcodec.git
